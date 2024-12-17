@@ -5,66 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Twine Games Showcase</title>
     <style>
+        :root {
+            --base: 1rem;
+            --scale: 1.618;
+            --spacing: calc(var(--base) * var(--scale));
+            --roman-green: #2D4F1E;
+            --laurel: #4A7834;
+            --cream: #F5EDE3;
+            --olive: #8B8B4B;
+            --text-dark: #2C1810;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
+            font-family: 'Times New Roman', serif;
+            max-width: calc(var(--base) * pow(var(--scale), 8));
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: calc(var(--spacing) * 2);
+            background-color: var(--cream);
+            background: linear-gradient(to bottom, 
+                var(--cream), 
+                rgba(77, 120, 52, 0.1));
+            color: var(--text-dark);
+            line-height: var(--scale);
         }
         
         .header {
             text-align: center;
-            padding: 40px 0;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 30px;
+            padding: calc(var(--spacing) * 2.5) 0;
+            background: var(--roman-green);
+            color: var(--cream);
+            border-radius: calc(var(--base) * 0.5);
+            margin-bottom: calc(var(--spacing) * 2);
+            box-shadow: 0 calc(var(--base) * 0.5) calc(var(--base) * 1) rgba(45, 79, 30, 0.2);
+        }
+        
+        .header h1 {
+            font-size: calc(var(--base) * pow(var(--scale), 2));
+            margin: 0 0 calc(var(--spacing));
+            line-height: 1.2;
+        }
+        
+        .header p {
+            font-size: calc(var(--base) * var(--scale));
+            margin: 0;
+            line-height: var(--scale);
+            color: #E8E8E8;
         }
         
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(calc(var(--base) * pow(var(--scale), 5)), 1fr));
+            gap: calc(var(--spacing));
         }
         
         .game-card {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            padding: calc(var(--spacing));
+            border-radius: calc(var(--base) * 0.5);
+            box-shadow: 0 calc(var(--base) * 0.25) calc(var(--base) * 0.5) rgba(45, 79, 30, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--laurel);
+            border-bottom: 3px solid var(--laurel);
         }
         
         .game-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 calc(var(--base) * 0.5) calc(var(--base) * 1) rgba(45, 79, 30, 0.3);
         }
         
         .game-card h2 {
-            margin-top: 0;
-            color: #2c3e50;
+            font-size: calc(var(--base) * pow(var(--scale), 1));
+            margin: 0 0 calc(var(--spacing));
+            color: var(--roman-green);
+            border-bottom: 1px solid var(--olive);
+            padding-bottom: calc(var(--base) * 0.5);
+            line-height: 1.2;
         }
         
         .game-card p {
-            color: #666;
+            margin: 0 0 calc(var(--spacing));
+            color: var(--text-dark);
+            font-size: calc(var(--base) * 1.1);
+            line-height: var(--scale);
         }
         
         .play-button {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
+            padding: calc(var(--base) * 0.8) calc(var(--base) * var(--scale));
+            background-color: var(--laurel);
+            color: var(--cream);
             text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.2s;
+            border-radius: calc(var(--base) * 0.25);
+            transition: all 0.3s;
+            font-size: calc(var(--base) * 1.1);
+            line-height: var(--scale);
         }
         
         .play-button:hover {
-            background-color: #2980b9;
+            background-color: var(--roman-green);
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>Student Twine Games Showcase</h1>
+        <p>Interactive stories created by our talented scholars</p>
+    </div>
+    
+    <div class="games-grid">
+        <div class="game-card">
+            <h2>Game Title</h2>
+            <p>Created by: Student Name</p>
+            <p>A brief description of the game goes here. What's it about? What makes it special?</p>
+            <a href="path-to-game.html" class="play-button">Play Game</a>
+        </div>
+    </div>
     <div class="header">
         <h1>Roman Art: Cleopatra Edition</h1>
         <p>Twine Games Created Fall 2024</p>
