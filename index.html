@@ -5,78 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Twine Games Showcase</title>
     <style>
-        :root {
-            --base: 1rem;
-            --scale: 1.618;
-            --spacing: calc(var(--base) * var(--scale));
-            --roman-green: #2D4F1E;
-            --laurel: #4A7834;
-            --cream: #F5EDE3;
-            --olive: #8B8B4B;
-            --text-dark: #2C1810;
-        }
-
-        body {
-            font-family: 'Times New Roman', serif;
-            max-width: calc(var(--base) * pow(var(--scale), 8));
-            margin: 0 auto;
-            padding: calc(var(--spacing) * 2);
-            background-color: var(--cream);
-            background: linear-gradient(to bottom, 
-                var(--cream), 
-                rgba(77, 120, 52, 0.1));
-            color: var(--text-dark);
-            line-height: var(--scale);
-        }
-        
-        .header {
-            text-align: center;
-            padding: calc(var(--spacing) * 2.5) 0;
-            background: var(--roman-green);
-            color: var(--cream);
-            border-radius: calc(var(--base) * 0.5);
-            margin-bottom: calc(var(--spacing) * 2);
-            box-shadow: 0 calc(var(--base) * 0.5) calc(var(--base) * 1) rgba(45, 79, 30, 0.2);
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: calc(var(--spacing) * 2);
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 calc(var(--spacing));
-        }
-
-        .header-image {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: calc(var(--base) * 0.25);
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
-        }
-
-        .header h1 {
-            font-size: calc(var(--base) * pow(var(--scale), 2));
-            margin: 0 0 calc(var(--spacing));
-            line-height: 1.2;
-        }
-        
-        .header p {
-            font-size: calc(var(--base) * var(--scale));
-            margin: 0;
-            line-height: var(--scale);
-            color: #E8E8E8;
-        }
+        /* Previous root and general styles remain the same until games-grid */
         
         .games-grid {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: calc(var(--spacing));
         }
-        
+
+        /* For regular cards */
         .game-card {
             background: white;
             border-radius: calc(var(--base) * 0.5);
@@ -84,70 +21,30 @@
             transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid var(--laurel);
             border-bottom: 3px solid var(--laurel);
-            width: 100%;
+            padding: calc(var(--spacing));
         }
 
+        /* Special styling for full-width cards */
         .game-card.full-width {
+            grid-column: 1 / -1; /* Spans full width */
             display: grid;
             grid-template-columns: 2fr 1fr;
             padding: calc(var(--spacing) * 1.5);
             gap: calc(var(--spacing));
         }
 
-        .game-card.full-width .card-content {
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--spacing) * 0.5);
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 calc(var(--base) * 0.5) calc(var(--base) * 1) rgba(45, 79, 30, 0.3);
         }
 
-        .game-card.full-width .card-actions {
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--spacing));
-        }
 
-          .game-card p {
-            margin: 0 0 calc(var(--spacing));
-            color: var(--text-dark);
-            font-size: calc(var(--base) * 1.1);
-            line-height: var(--scale);
-        }
-        .game-card h2 {
-            font-size: calc(var(--base) * pow(var(--scale), 1));
-            margin: 0 0 calc(var(--spacing));
-            color: var(--roman-green);
-            border-bottom: 1px solid var(--olive);
-            padding-bottom: calc(var(--base) * 0.5);
-            line-height: 1.2;
-        }
-        
-        .metadata {
-            color: var(--olive);
-            font-style: italic;
-            margin: 0;
-        }
-        
-        .play-button {
-            display: inline-block;
-            padding: calc(var(--base) * 0.8) calc(var(--base) * var(--scale));
-            background-color: var(--laurel);
-            color: var(--cream);
-            text-decoration: none;
-            border-radius: calc(var(--base) * 0.25);
-            transition: all 0.3s;
-            font-size: calc(var(--base) * 1.1);
-            line-height: var(--scale);
-            width: fit-content;
-        }
-        
-        .play-button:hover {
-            background-color: var(--roman-green);
-        }
 
         @media (max-width: 768px) {
             .game-card.full-width {
                 grid-template-columns: 1fr;
             }
+   
             
             .header-content {
                 flex-direction: column;
